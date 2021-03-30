@@ -69,21 +69,16 @@ public class HomeActivity extends BaseActivity implements OnGetData, SwipeRefres
     }
 
     private void initRecyclers() {
-        //Category Recycler init
-        LinearLayoutManager layoutManagerCategory =
-                new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL
-                        , false);
-        binding.categoryRecycler.setLayoutManager(layoutManagerCategory);
-        categoryAdapter = new CategoryAdapter(this, new ArrayList<>(), this::filterProducts);
-
-        binding.categoryRecycler.setAdapter(categoryAdapter);
+        //Category Slider init
+        categoryAdapter = new CategoryAdapter( new ArrayList<>(),this, this::filterProducts);
+        binding.categorySlider.setAdapter(categoryAdapter);
 
         //Whats the new Recycler init
         LinearLayoutManager layoutManagerWhatsNew =
                 new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,
                         false);
         binding.newRecycler.setLayoutManager(layoutManagerWhatsNew);
-        whatsNewAdaptor = new ProductsAdapter(this, isUserLogin, new ArrayList<>());
+        whatsNewAdaptor = new ProductsAdapter(new ArrayList<>(),this, isUserLogin);
         binding.newRecycler.setAdapter(whatsNewAdaptor);
         binding.indicatorTheNew.attachToRecyclerView(binding.newRecycler);
 
@@ -92,7 +87,7 @@ public class HomeActivity extends BaseActivity implements OnGetData, SwipeRefres
                 new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,
                         false);
         binding.trendingRecycler.setLayoutManager(layoutManagerTrending);
-        trendingAdaptor = new ProductsAdapter(this, isUserLogin, new ArrayList<>());
+        trendingAdaptor = new ProductsAdapter(new ArrayList<>(),this, isUserLogin);
         binding.trendingRecycler.setAdapter(trendingAdaptor);
         binding.indicatorTrending.attachToRecyclerView(binding.trendingRecycler);
     }
@@ -107,7 +102,7 @@ public class HomeActivity extends BaseActivity implements OnGetData, SwipeRefres
                 homeResponse.getWhatsNew())
                 .observe(this, products ->
                 {
-                    whatsNewAdaptor.setDataList(products);
+                    whatsNewAdaptor.setProducts(products);
                     if (products.size() > 0) {
                         binding.noNew.setVisibility(View.GONE);
                     } else {
@@ -120,7 +115,7 @@ public class HomeActivity extends BaseActivity implements OnGetData, SwipeRefres
         homeViewModel.getProductsByCategory(categoryID,
                 homeResponse.getTrending())
                 .observe(this, products -> {
-                    trendingAdaptor.setDataList(products);
+                    trendingAdaptor.setProducts(products);
 
                     if (products.size() > 0) {
                         binding.noTrending.setVisibility(View.GONE);
@@ -137,7 +132,7 @@ public class HomeActivity extends BaseActivity implements OnGetData, SwipeRefres
                     isCategoryGet = true;
                     onDataGet();
                     if (categoryList!=null)
-                       categoryAdapter.setDataList(categoryList);
+                       categoryAdapter.setCategories(categoryList);
                 });
     }
 
@@ -166,8 +161,8 @@ public class HomeActivity extends BaseActivity implements OnGetData, SwipeRefres
     }
 
     private void checkProducts() {
-        whatsNewAdaptor.setDataList(homeResponse.getWhatsNew());
-        trendingAdaptor.setDataList(homeResponse.getTrending());
+        whatsNewAdaptor.setProducts(homeResponse.getWhatsNew());
+        trendingAdaptor.setProducts(homeResponse.getTrending());
 
         if (homeResponse.getWhatsNew().size() > 0) {
             binding.noNew.setVisibility(View.GONE);

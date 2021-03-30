@@ -1,6 +1,4 @@
 package azmithabet.com.tam.repository;
-
-import android.annotation.SuppressLint;
 import android.content.Context;
 
 import androidx.lifecycle.MutableLiveData;

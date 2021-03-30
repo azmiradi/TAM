@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="sign_in"
+            type="azmithabet.com.tam.ui.activity.SignIn"/>
     </data>
    <ScrollView
        android:layout_width="match_parent"
@@ -25,7 +27,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:src="@drawable/logo"
-
             android:layout_marginTop="@dimen/_100sdp"
             android:contentDescription="@string/app_name" />
         <com.google.android.material.textfield.TextInputLayout
@@ -116,7 +117,9 @@
     android:id="@+id/login_bu"
     android:textAllCaps="false"
     android:text="@string/sign_in"
-     />
+    android:onClick="@{() -> sign_in.signIn()}"
+
+    />
  <TextView
      android:layout_width="match_parent"
      android:layout_height="wrap_content"
@@ -140,6 +143,8 @@
             android:textSize="@dimen/_15ssp"
             android:id="@+id/skip"
             android:fontFamily="@font/ample_soft_pro_bold"
+            android:onClick="@{() -> sign_in.skip()}"
+
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

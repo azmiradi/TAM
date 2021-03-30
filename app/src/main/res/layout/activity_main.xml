@@ -107,7 +107,7 @@
                      android:layout_marginTop="@dimen/_20sdp"
                      android:text="@string/the_new"
                      app:layout_constraintStart_toStartOf="parent"
-                     app:layout_constraintTop_toBottomOf="@+id/category_recycler" />
+                     app:layout_constraintTop_toBottomOf="@+id/category_slider" />
 
                  <TextView
                      android:id="@+id/trending"
@@ -117,14 +117,21 @@
                      app:layout_constraintStart_toStartOf="parent"
                      app:layout_constraintTop_toBottomOf="@+id/indicator_the_new" />
 
-                 <androidx.recyclerview.widget.RecyclerView
-                     android:id="@+id/category_recycler"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     app:layout_constraintEnd_toEndOf="parent"
-                     app:layout_constraintStart_toStartOf="parent"
-                     app:layout_constraintTop_toTopOf="parent"
-                     />
+                  <com.github.islamkhsh.CardSliderViewPager
+                      android:layout_width="match_parent"
+                      android:layout_height="@dimen/_170sdp"
+                      android:id="@+id/category_slider"
+                      android:layout_marginTop="24dp"
+                      app:cardSlider_smallScaleFactor="1"
+                      app:cardSlider_otherPagesWidth="@dimen/_15sdp"
+                      app:cardSlider_pageMargin="@dimen/_10sdp"
+                      app:auto_slide_time="5"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toTopOf="parent"
+                      />
+
+
 
                  <androidx.recyclerview.widget.RecyclerView
                      android:id="@+id/new_recycler"

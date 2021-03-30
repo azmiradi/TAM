@@ -32,7 +32,6 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
@@ -58,13 +57,16 @@ dependencies {
     //material UI
     implementation 'com.google.android.material:material:1.3.0'
     implementation "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:1.2.1"
+    implementation 'com.github.IslamKhSh:CardSlider:1.0.1'
+
     //Swipe Refresher
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
-     //internet Connection
+    //internet Connection
     implementation 'com.github.imanshul:NetworkStateDemo:2.0'
     implementation 'com.novoda:merlin:1.2.0'
+
 
 }

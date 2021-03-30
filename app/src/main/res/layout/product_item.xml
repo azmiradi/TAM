@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
+   <data>
+        <variable
+           name="product"
+           type="azmithabet.com.tam.model.Product" />
+   </data>
     <androidx.cardview.widget.CardView
         android:layout_width="@dimen/_90sdp"
         android:layout_height="wrap_content"
@@ -10,13 +14,11 @@
         app:cardBackgroundColor="@color/shadow"
         app:cardCornerRadius="@dimen/_13sdp"
         app:cardElevation="0dp"
-
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
             <TextView
                 android:id="@+id/product_name"
@@ -26,7 +28,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 style="@style/text_view_item.master_title"
-                 />
+                android:text="@{product.name}"
+                />
 
             <TextView
                 android:id="@+id/shop_name"
@@ -35,6 +38,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/product_name"
                 style="@style/text_view_item.branch_title"
+                android:text="@{product.shopName}"
                 />
 
             <TextView
@@ -44,6 +48,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/shop_name"
                 style="@style/text_view_item.branch_title"
+                android:text="@{product.currency+ ' ' +product.price}"
+
                 />
 
             <androidx.cardview.widget.CardView
@@ -67,7 +73,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="fitXY"
-                        android:src="@drawable/logo" />
+                        android:src="@drawable/logo"
+                        android:contentDescription="@string/app_name" />
                     <ImageView
                         android:layout_width="@dimen/_10sdp"
                         android:layout_height="@dimen/_10sdp"
@@ -76,7 +83,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_margin="@dimen/_3sdp"
                         android:id="@+id/rating_img"
-                        />
+                        android:contentDescription="@string/app_name" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -86,6 +93,7 @@
                         android:textSize="@dimen/_10ssp"
                         android:fontFamily="@font/ample_soft_pro_regular"
                         android:textColor="@color/gray"
+                        android:text="@{product.rate}"
                         app:layout_constraintTop_toTopOf="@+id/rating_img"
                         app:layout_constraintBottom_toBottomOf="@+id/rating_img"
                         />
@@ -97,14 +105,11 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_margin="@dimen/_3sdp"
                         android:id="@+id/fav_img"
-                        />
+                        android:contentDescription="@string/app_name" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <data>
-
-    </data>
 </layout>

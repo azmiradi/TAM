@@ -1,6 +1,5 @@
 package azmithabet.com.tam.localDB.Shared;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import static android.content.Context.MODE_PRIVATE;

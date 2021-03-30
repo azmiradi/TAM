@@ -1,6 +1,4 @@
 package azmithabet.com.tam.ui.activity;
-
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import azmithabet.com.tam.R;
@@ -8,7 +6,6 @@ import azmithabet.com.tam.databinding.ActivitySignInBinding;
 import azmithabet.com.tam.model.Response;
 import azmithabet.com.tam.model.User;
 import azmithabet.com.tam.view_model.SignInViewModel;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +20,7 @@ import static azmithabet.com.tam.util.Constants.INCOREECT_RESPONSE_CODE;
 import static azmithabet.com.tam.util.ValidUi.isValidEmail;
 import static azmithabet.com.tam.util.ValidUi.isValidPassword;
 
-public class SignIn extends BaseActivity implements View.OnClickListener {
+public class SignIn extends BaseActivity {
    private ActivitySignInBinding binding;
    private SignInViewModel signInViewModel;
     private static final String TAG = "SignIn";
@@ -36,7 +33,6 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
 
         internetListener();
         initialization();
-        clickListenerInitialization();
     }
 
     private void internetListener() {
@@ -50,40 +46,10 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
     private void initialization() {
         signInViewModel = new ViewModelProvider(this)
                 .get(SignInViewModel.class);
-
+        binding.setSignIn(this);
     }
 
-
-    private void clickListenerInitialization() {
-        binding.loginBu.setOnClickListener(this);
-        binding.skip.setOnClickListener(this);
-        binding.notHaveAccount.setOnClickListener(this);
-        binding.forgetPassword.setOnClickListener(this);
-    }
-
-    @SuppressLint("NonConstantResourceId")
-    @Override
-    public void onClick(View v) {
-        switch (v.getId())
-        {
-            case R.id.login_bu:
-                  signIn();
-                break;
-            case R.id.not_have_account:
-
-                break;
-            case R.id.forget_password:
-
-                break;
-
-            case R.id.skip:
-                signInViewModel.setLogin(false,this);
-                startMainActivity();
-                break;
-        }
-    }
-
-    private void signIn() {
+    public void signIn() {
        if (validtionDone()){
            showProgressDialog(null,getString(R.string.loading_login));
            signInViewModel.login(new User(getText(binding.email),
@@ -147,6 +113,11 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
         else {
             showToast(getString(R.string.login_error));
         }
+    }
+
+    public void skip(){
+        signInViewModel.setLogin(false,this);
+        startMainActivity();
     }
 
     private void startMainActivity() {

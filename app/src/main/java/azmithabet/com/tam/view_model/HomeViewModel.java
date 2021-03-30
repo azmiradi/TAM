@@ -1,8 +1,6 @@
 package azmithabet.com.tam.view_model;
 
 import android.content.Context;
-import android.util.Log;
-
 import java.util.List;
 
 import androidx.lifecycle.LiveData;

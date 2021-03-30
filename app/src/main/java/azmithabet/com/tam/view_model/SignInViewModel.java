@@ -4,7 +4,6 @@ import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
-import azmithabet.com.tam.localDB.Shared.SharedPreference;
 import azmithabet.com.tam.model.Response;
 import azmithabet.com.tam.model.User;
 import azmithabet.com.tam.repository.SignInRepository;

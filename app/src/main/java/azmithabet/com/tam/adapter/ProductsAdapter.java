@@ -7,50 +7,88 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.RecyclerView;
 import azmithabet.com.tam.R;
 import azmithabet.com.tam.databinding.ProductItemBinding;
-import azmithabet.com.tam.model.Category;
 import azmithabet.com.tam.model.Product;
 
-public class ProductsAdapter extends BaseAdapter {
+public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyViewHolder> {
 
-   private ProductItemBinding binding;
-   private final boolean isUserLogin;
-    public ProductsAdapter(Context context, boolean isUserLogin,List<Category> arrayList) {
-        super(context);
-        dataList = arrayList;
-        this.isUserLogin=isUserLogin;
-       }
+    private final Context context;
+    private final boolean isUserLogin;
+    private List<Product> products;
+    private LayoutInflater layoutInflater;
+
+    public ProductsAdapter(List<Product> products,
+                           Context context, boolean isUserLogin) {
+        this.products = products;
+        this.isUserLogin = isUserLogin;
+        this.context = context;
+    }
 
     @NonNull
     @Override
-    public BaseAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        binding  = DataBindingUtil.inflate( LayoutInflater.from(viewGroup.getContext())
-                , R.layout.product_item, viewGroup, false) ;
-        return new BaseAdapter.MyViewHolder (binding.getRoot());
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (layoutInflater == null) {
+            layoutInflater = LayoutInflater.from(parent.getContext());
+        }
+        ProductItemBinding binding =
+                DataBindingUtil.inflate(layoutInflater, R.layout.product_item, parent, false);
+        return new MyViewHolder(binding);
     }
 
-    @SuppressLint({"SetTextI18n", "UseCompatLoadingForDrawables"})
     @Override
-    public void onBindViewHold(final int position, Object itemView) {
-        Product product= (Product) dataList.get(position);
-        Picasso.get().load(product.getImage())
-                .placeholder(BASE_CONTEXT.getResources().getDrawable(R.drawable.logo_main))
-                .error(BASE_CONTEXT.getResources().getDrawable(R.drawable.ic_error))
-                .into(binding.img);
-        binding.price.setText(product.getCurrency()+"  "+product.getPrice());
-        binding.shopName.setText(product.getShopName());
-        binding.productName.setText(product.getName());
-        binding.ratingVal.setText(product.getRate());
+    public int getItemViewType(int position) {
+        return position;
+    }
 
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+        notifyDataSetChanged();
+    }
+
+    @SuppressLint({"UseCompatLoadingForDrawables", "SetTextI18n"})
+    @Override
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
+        Product product = products.get(position);
+        Picasso.get().load(product.getImage())
+                .placeholder(context.getResources().getDrawable(R.drawable.logo_main))
+                .error(context.getResources().getDrawable(R.drawable.ic_error))
+                .into(holder.binding.img);
+        holder.binding.setProduct(product);
         if (!isUserLogin)
-            binding.favImg.setVisibility(View.GONE);
+            holder.binding.favImg.setVisibility(View.GONE);
         else
-            binding.favImg.setVisibility(View.VISIBLE);
+            holder.binding.favImg.setVisibility(View.VISIBLE);
 
     }
+
+    @Override
+    public int getItemCount() {
+        return products.size();
+    }
+
+    static class MyViewHolder extends RecyclerView.ViewHolder {
+
+        private final ProductItemBinding binding;
+
+        MyViewHolder(final ProductItemBinding itemBinding) {
+            super(itemBinding.getRoot());
+            this.binding = itemBinding;
+        }
+    }
+
+
 }
+
+

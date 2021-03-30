@@ -6,8 +6,8 @@
 
     </data>
     <androidx.cardview.widget.CardView
-        android:layout_width="@dimen/_190sdp"
-        android:layout_height="@dimen/_170sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:cardCornerRadius="@dimen/_16sdp"
          app:cardElevation="0dp"
         android:layout_marginEnd="@dimen/_10sdp"
@@ -19,6 +19,6 @@
          android:src="@drawable/logo_main"
          android:scaleType="fitXY"
          android:id="@+id/img"
-          />
+         android:contentDescription="@string/app_name" />
     </androidx.cardview.widget.CardView>
 </layout>
