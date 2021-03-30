@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        tools:context=".ui.activity.HomeActivity"
+        >
+
+        <ImageView
+            android:id="@+id/shops"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/shops"
+            android:src="@drawable/shops"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:contentDescription="@string/search"
+            android:src="@drawable/search"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintStart_toEndOf="@+id/shops"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             android:contentDescription="@string/app_name"
+            android:src="@drawable/logo_main"
+            android:layout_marginTop="@dimen/_25sdp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:contentDescription="@string/fav"
+            android:layout_marginTop="@dimen/_20sdp"
+
+            android:src="@drawable/fav"
+            app:layout_constraintEnd_toStartOf="@+id/filter"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/filter"
+            android:src="@drawable/filter"
+            android:layout_marginTop="@dimen/_20sdp"
+             android:layout_marginEnd="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/discovery"
+            style="@style/text_view.home_text"
+            android:layout_marginTop="@dimen/_90sdp"
+            android:text="@string/discovery"
+            android:textColor="@color/text_color"
+            app:layout_constraintEnd_toEndOf="@id/logo"
+            app:layout_constraintStart_toStartOf="@id/logo"
+            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_38sdp"
+            app:layout_constraintBottom_toTopOf="@+id/exclusive"
+            app:layout_constraintTop_toBottomOf="@+id/discovery"
+            >
+
+        <ScrollView
+             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             >
+              <androidx.constraintlayout.widget.ConstraintLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginStart="@dimen/_12sdp"
+                 android:layout_marginEnd="@dimen/_12sdp"
+                >
+
+
+                 <TextView
+                     android:id="@+id/the_new"
+                     style="@style/text_view.home_text"
+                     android:layout_marginTop="@dimen/_20sdp"
+                     android:text="@string/the_new"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toBottomOf="@+id/category_recycler" />
+
+                 <TextView
+                     android:id="@+id/trending"
+                     style="@style/text_view.home_text"
+                     android:layout_marginTop="@dimen/_20sdp"
+                     android:text="@string/trending"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toBottomOf="@+id/indicator_the_new" />
+
+                 <androidx.recyclerview.widget.RecyclerView
+                     android:id="@+id/category_recycler"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     app:layout_constraintEnd_toEndOf="parent"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toTopOf="parent"
+                     />
+
+                 <androidx.recyclerview.widget.RecyclerView
+                     android:id="@+id/new_recycler"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="24dp"
+                     app:layout_constraintTop_toBottomOf="@+id/the_new" />
+                 <TextView
+                     android:id="@+id/no_new"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="24dp"
+                     style="@style/text_view_item.master_title"
+                     android:text="@string/no_data"
+                     app:layout_constraintTop_toBottomOf="@+id/the_new" />
+
+                 <TextView
+                     android:id="@+id/no_trending"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="24dp"
+                     style="@style/text_view_item.master_title"
+                     android:text="@string/no_data"
+                     app:layout_constraintTop_toBottomOf="@+id/trending" />
+
+                 <androidx.recyclerview.widget.RecyclerView
+                     android:id="@+id/trending_recycler"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="24dp"
+                     app:layout_constraintTop_toBottomOf="@+id/trending" />
+
+                 <ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
+                     android:id="@+id/indicator_the_new"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="@dimen/_5sdp"
+                     app:layout_constraintEnd_toEndOf="parent"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toBottomOf="@+id/new_recycler"
+                     app:spi_dotColor="@color/start_color_gradient"
+                     app:spi_dotSelectedColor="@color/text_color" />
+
+                 <ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
+                     android:id="@+id/indicator_trending"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="@dimen/_5sdp"
+                     app:layout_constraintEnd_toEndOf="parent"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toBottomOf="@+id/trending_recycler"
+                     app:spi_dotColor="@color/start_color_gradient"
+                     app:spi_dotSelectedColor="@color/text_color" />
+             </androidx.constraintlayout.widget.ConstraintLayout>
+          </ScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <ImageView
+            android:id="@+id/bell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/shops"
+            android:src="@drawable/shops"
+            android:layout_marginStart="@dimen/_12sdp"
+
+            android:layout_marginBottom="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageView
+            android:id="@+id/exclusive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:contentDescription="@string/search"
+            android:src="@drawable/exclusive"
+            android:layout_marginBottom="@dimen/_10sdp"
+            app:layout_constraintStart_toEndOf="@+id/shops"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+
+        <ImageView
+            android:id="@+id/basket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:contentDescription="@string/fav"
+            android:layout_marginBottom="@dimen/_10sdp"
+
+            android:src="@drawable/basket"
+            app:layout_constraintEnd_toStartOf="@+id/filter"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageView
+            android:id="@+id/me"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/filter"
+            android:src="@drawable/me"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+    </data>
+
+</layout>
