@@ -15,7 +15,7 @@ Tam is an sample E-commerce App
 </p>
 
 # What does this app do?
- Displays a set of different products that you can buy
+ Displays a set of different products
   
 # Libraries this app uses:
 
