@@ -28,8 +28,7 @@ Tam is an sample E-commerce App
 6. ScrollingPagerIndicator
 7. SwiperefreshLayout
 8. Picasso
-9. Merlin
-10. NetworkStateDemo
+9. NetworkStateDemo
 
 <p align="center">
 <img src="https://github.com/azmiradi/TAM/blob/master/screens/logo.png" alt="phone image" width="300px" />
