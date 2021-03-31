@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:src="@drawable/logo"
+            android:src="@drawable/logo_colored"
             android:layout_marginTop="@dimen/_100sdp"
             android:contentDescription="@string/app_name" />
         <com.google.android.material.textfield.TextInputLayout

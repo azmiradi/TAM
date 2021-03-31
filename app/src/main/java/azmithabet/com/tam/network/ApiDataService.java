@@ -18,10 +18,10 @@ public interface ApiDataService {
      @POST(LOGIN_PATH)
      Single<Response> login(@Header("lang") String lang,
                             @Header("apiKey") String apiKey, @Body User user);
-     @GET(CATEGORY_PATH)
+     @POST(CATEGORY_PATH)
      Single<ResponseBody> getCategories(@Header("lang") String lang,
                                             @Header("apiKey") String apiKey);
-     @GET(HOME_PATH)
+     @POST(HOME_PATH)
      Single<ResponseBody> getHome(@Header("lang") String lang,
                                         @Header("apiKey") String apiKey);
 

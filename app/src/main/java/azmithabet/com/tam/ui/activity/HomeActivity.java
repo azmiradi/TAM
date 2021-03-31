@@ -44,14 +44,6 @@ public class HomeActivity extends BaseActivity implements OnGetData, SwipeRefres
         getData();
     }
 
-    private void internetListener() {
-        checkInternet(this, () -> Log.d(TAG, "onConnectionChange: "));
-    }
-
-    private void hidStatusBar() {
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-    }
-
     private void Initialization() {
         homeViewModel = new ViewModelProvider(this)
                 .get(HomeViewModel.class);
@@ -148,6 +140,7 @@ public class HomeActivity extends BaseActivity implements OnGetData, SwipeRefres
     private void checkHomeResult() {
         isHomeGet = true;
         onDataGet();
+
         if (homeResponse!=null) {
             if (homeResponse.getCode() == COREECT_RESPONSE_CODE) {
                 checkProducts();
@@ -169,7 +162,6 @@ public class HomeActivity extends BaseActivity implements OnGetData, SwipeRefres
         } else {
             binding.noNew.setVisibility(View.VISIBLE);
         }
-
 
         if (homeResponse.getTrending().size() > 0) {
             binding.noTrending.setVisibility(View.GONE);
@@ -199,12 +191,6 @@ public class HomeActivity extends BaseActivity implements OnGetData, SwipeRefres
     public void onRefresh() {
         getData();
         binding.refresh.setRefreshing(false);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        bindListener();
     }
 
     @Override

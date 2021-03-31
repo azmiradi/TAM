@@ -29,4 +29,10 @@ public class Constants {
     //Shared Preference
     public static final String TAM_DB = "tam_db";
     public static final String IS_LOGIN = "is_login";
+
+    public static final int PASSWORD_LENGTH =8;
+
+    public enum ErrorType{
+        IS_EMPTY,ERROR_FORMAT,NO_ERROR
+    }
 }

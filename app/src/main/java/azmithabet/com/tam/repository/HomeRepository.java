@@ -76,6 +76,7 @@ public class HomeRepository {
 
         return responseMutableLiveData;
     }
+
     private HomeResponse getProducts(ResponseBody responseBody) {
         List<Product> whatsNew=new ArrayList<>();
         List<Product> trending=new ArrayList<>();
