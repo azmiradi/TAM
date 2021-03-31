@@ -3,7 +3,7 @@ import android.content.Context;
 
 import androidx.lifecycle.MutableLiveData;
 import azmithabet.com.tam.localDB.Shared.SharedPreference;
-import azmithabet.com.tam.model.Response;
+import azmithabet.com.tam.model.BaseResponse;
 import azmithabet.com.tam.model.User;
 import azmithabet.com.tam.network.RetrofitClient;
 import io.reactivex.Single;
@@ -17,10 +17,10 @@ import static azmithabet.com.tam.util.Constants.LANG;
 public class SignInRepository {
     public CompositeDisposable compositeDisposable=new CompositeDisposable();
 
-     public MutableLiveData<Response> login(User user) {
-        MutableLiveData<Response> responseMutableLiveData=new MutableLiveData<>();
+     public MutableLiveData<BaseResponse> login(User user) {
+        MutableLiveData<BaseResponse> responseMutableLiveData=new MutableLiveData<>();
 
-        Single<Response> observable = RetrofitClient.getService()
+        Single<BaseResponse> observable = RetrofitClient.getService()
                 .login(LANG,API_KEY,user)
             .subscribeOn(Schedulers.newThread()).
                 observeOn(AndroidSchedulers.mainThread());

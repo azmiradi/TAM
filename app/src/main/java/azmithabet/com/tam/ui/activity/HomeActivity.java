@@ -1,9 +1,7 @@
 package azmithabet.com.tam.ui.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 
 import java.util.ArrayList;
 
@@ -16,7 +14,7 @@ import azmithabet.com.tam.adapter.CategoryAdapter;
 import azmithabet.com.tam.adapter.ProductsAdapter;
 import azmithabet.com.tam.databinding.ActivityMainBinding;
 import azmithabet.com.tam.interfaces.OnGetData;
-import azmithabet.com.tam.model.HomeResponse;
+import azmithabet.com.tam.model.HomeBaseResponse;
 import azmithabet.com.tam.view_model.HomeViewModel;
 
 import static azmithabet.com.tam.util.Constants.COREECT_RESPONSE_CODE;
@@ -29,7 +27,7 @@ public class HomeActivity extends BaseActivity implements OnGetData, SwipeRefres
     private ProductsAdapter trendingAdaptor;
     private CategoryAdapter categoryAdapter;
     private boolean isHomeGet, isCategoryGet, isUserLogin = false;
-    private HomeResponse homeResponse;
+    private HomeBaseResponse homeResponse;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

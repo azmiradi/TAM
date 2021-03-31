@@ -7,7 +7,7 @@ import android.util.Patterns;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import azmithabet.com.tam.model.Response;
+import azmithabet.com.tam.model.BaseResponse;
 import azmithabet.com.tam.model.User;
 import azmithabet.com.tam.repository.SignInRepository;
 import azmithabet.com.tam.util.Constants;
@@ -18,7 +18,7 @@ public class SignInViewModel extends ViewModel {
 
     private final SignInRepository signInRepository =new SignInRepository();
 
-    public LiveData<Response> login(User user) {
+    public LiveData<BaseResponse> login(User user) {
         return signInRepository.login(user);
     }
 

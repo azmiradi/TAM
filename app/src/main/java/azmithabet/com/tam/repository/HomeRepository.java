@@ -15,7 +15,7 @@ import java.util.List;
 import androidx.lifecycle.MutableLiveData;
 import azmithabet.com.tam.localDB.Shared.SharedPreference;
 import azmithabet.com.tam.model.Category;
-import azmithabet.com.tam.model.HomeResponse;
+import azmithabet.com.tam.model.HomeBaseResponse;
 import azmithabet.com.tam.model.Product;
 import azmithabet.com.tam.network.RetrofitClient;
 import io.reactivex.Observable;
@@ -60,8 +60,8 @@ public class HomeRepository {
         return responseMutableLiveData;
     }
 
-    public MutableLiveData<HomeResponse> getHome() {
-        MutableLiveData<HomeResponse> responseMutableLiveData = new MutableLiveData<>();
+    public MutableLiveData<HomeBaseResponse> getHome() {
+        MutableLiveData<HomeBaseResponse> responseMutableLiveData = new MutableLiveData<>();
         Single<ResponseBody> observable = RetrofitClient.getService()
                 .getHome(LANG, API_KEY)
                 .subscribeOn(Schedulers.newThread())
@@ -77,7 +77,7 @@ public class HomeRepository {
         return responseMutableLiveData;
     }
 
-    private HomeResponse getProducts(ResponseBody responseBody) {
+    private HomeBaseResponse getProducts(ResponseBody responseBody) {
         List<Product> whatsNew=new ArrayList<>();
         List<Product> trending=new ArrayList<>();
         int code=0;
@@ -109,7 +109,7 @@ public class HomeRepository {
             Log.d(TAG, "getProducts: "+e.getMessage());
         }
 
-        return new HomeResponse(whatsNew,trending,code,msg);
+        return new HomeBaseResponse(whatsNew,trending,code,msg);
     }
 
     private List<Category> getCategoryList(ResponseBody responseBody) {

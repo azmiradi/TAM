@@ -6,7 +6,7 @@ import java.util.List;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 import azmithabet.com.tam.model.Category;
-import azmithabet.com.tam.model.HomeResponse;
+import azmithabet.com.tam.model.HomeBaseResponse;
 import azmithabet.com.tam.model.Product;
 import azmithabet.com.tam.repository.HomeRepository;
 
@@ -18,7 +18,7 @@ public class HomeViewModel extends ViewModel {
         return homeRepository.getCategory();
     }
 
-    public LiveData<HomeResponse> getHome() {
+    public LiveData<HomeBaseResponse> getHome() {
         return homeRepository.getHome();
     }
 

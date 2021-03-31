@@ -1,13 +1,13 @@
 package azmithabet.com.tam.model;
 
-public class Response {
+public class BaseResponse {
     private int code;
     private String msg;
 
-    public Response() {
+    public BaseResponse() {
     }
 
-    public Response(int code, String msg) {
+    public BaseResponse(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }

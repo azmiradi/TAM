@@ -2,8 +2,6 @@ package azmithabet.com.tam.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.WindowManager;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -11,7 +9,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import azmithabet.com.tam.R;
 import azmithabet.com.tam.databinding.ActivitySignInBinding;
-import azmithabet.com.tam.model.Response;
+import azmithabet.com.tam.model.BaseResponse;
 import azmithabet.com.tam.model.User;
 import azmithabet.com.tam.util.Constants;
 import azmithabet.com.tam.view_model.SignInViewModel;
@@ -101,13 +99,13 @@ public class SignIn extends BaseActivity {
         return editText.getText().toString();
     }
 
-    private void checkLoginResult(Response response) {
+    private void checkLoginResult(BaseResponse baseResponse) {
         hideDialog();
-        if (response != null) {
-            if (response.getCode() == COREECT_RESPONSE_CODE) {
+        if (baseResponse != null) {
+            if (baseResponse.getCode() == COREECT_RESPONSE_CODE) {
                 signInViewModel.setLogin(true, this);
                 startMainActivity();
-            } else if (response.getCode() == INCOREECT_RESPONSE_CODE) {
+            } else if (baseResponse.getCode() == INCOREECT_RESPONSE_CODE) {
                 showToast(getString(R.string.incoreect_login));
             } else {
                 showToast(getString(R.string.login_error));
