@@ -1,6 +1,5 @@
 # TAM
-Task For Icon Creation Company 
-
+ 
 Download the APK: https://github.com/azmiradi/TAM/blob/master/app-debug.apk
 
 Tam is an sample E-commerce App
